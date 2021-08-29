@@ -1,0 +1,34 @@
+en:
+  entries:
+    index:
+      title: 'TimeSheet Entries'
+      label:
+        separator: ":"
+        currency: "$"
+        entry_date: "%{start_time} - %{end_time}"
+      button:
+        new: "Create Timesheet Entry"
+    new:
+      title: 'Create Timesheet Entry'
+      label:
+        date: "Date"
+        start_time: "Start time"
+        finish_time: "Finish time"
+      button:
+        new: "Create"
+  date:
+    formats:
+      datepicker_date_format: "%Y-%m-%d"
+      datepicker_time_format: "%H:%M"
+      date_format: "%d/%m/%Y"
+      time_format: "%H:%M"
+  activerecord:
+    errors:
+      models:
+        entry:
+          attributes:
+            base:
+              in_the_future: "Can't be in the future"
+              overlap: "Overlapping timesheet"
+            end_date:
+              before_start_time: "must be later than start time"

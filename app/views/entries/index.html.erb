@@ -1,0 +1,27 @@
+<div class="entry">
+  <button type="button">
+    <%= link_to t('entries.index.button.new'), :new_entry %>
+  </button>
+  <h2><%= t 'entries.index.title' %></h2>
+  <% @entries.each do |entry| %>
+    <table>
+      <tr>
+        <td>
+          <p>
+            <%= entry[:date] %><%= t 'entries.index.label.separator' %>
+          </p>
+        </td>
+        <td>
+          <p>
+            <%= t 'entries.index.label.entry_date', start_time: entry[:start_time], end_time: entry[:end_time] %>
+          </p>
+        </td>
+        <td>
+          <p>
+            <%= t 'entries.index.label.currency' %><%= entry[:price] %>
+          </p>
+        </td>
+      </tr>
+    </table>
+  <% end %>
+</div>

@@ -1,0 +1,1 @@
+class EntryError < StandardError; end
