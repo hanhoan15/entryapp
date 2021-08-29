@@ -1,0 +1,52 @@
+<div class="entry">
+  <h2><%= t 'entries.new.title' %></h2>
+  <%= form_for @entries, :url => entries_path do |f| %>
+    <table>
+      <tr>
+        <td>
+          <%= f.label t('entries.new.label.date') %>
+        </td>
+        <td>
+          <%= date_field :entry, "date", required: true %>
+        </td>
+        <td>
+          <% @entries.errors.full_messages_for(:base).each do |message| %>
+            <div class="errors"><%= message %></div>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= f.label t('entries.new.label.start_time') %>
+        </td>
+        <td>
+          <%= time_field :entry, "start_time", value: "%H:%M", required: true %>
+        </td>
+        <td>
+          <% @entries.errors.full_messages_for(:start_date).each do |message| %>
+            <div class="errors"><%= message %></div>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= f.label t('entries.new.label.finish_time') %>
+        </td>
+        <td>
+          <%= time_field :entry, "finish_time", value: "%H:%M", include_seconds: false, required: true %>
+        </td>
+        <td>
+          <% @entries.errors.full_messages_for(:end_date).each do |message| %>
+            <div class="errors"><%= message.sub('date', 'time') %></div>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= f.submit t('entries.new.button.new'), :id => 'submitEntry' %>
+        </td>
+      </tr>
+    </table>
+  <%- end -%>
+</div>
+
